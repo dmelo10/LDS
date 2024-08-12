@@ -2,8 +2,8 @@
 Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
 
 ## Integrantes
-* Nome completo do aluno 1
-* Nome completo do aluno 2
+* Alexandre Breedveld Athayde Filho
+* Davi Andrade Rocha Melo de Oliveira
 * Nome completo do aluno 3
 * Nome completo do aluno 4
 
