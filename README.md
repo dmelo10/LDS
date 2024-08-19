@@ -43,3 +43,48 @@ Assim que a primeira versão do sistema estiver disponível, deverá complementa
 2. Eu quero limitar as matrículas em cada disciplina a 60 alunos para respeitar a capacidade máxima.
 3. Eu quero verificar se há pelo menos 3 alunos matriculados em cada disciplina para determinar se ela será ofertada.
 4. Eu quero notificar o sistema de cobranças após a matrícula de um aluno para que as taxas sejam aplicadas corretamente.
+
+```plantuml
+@startuml
+left to right direction
+actor Aluno
+actor Professor
+actor Secretaria
+actor "Sistema de Cobranças" as Cobrancas
+
+rectangle "Sistema de Matrículas" {
+  usecase "Fazer Login" as UC1
+  usecase "Matricular em Disciplinas" as UC2
+  usecase "Cancelar Matrícula" as UC3
+  usecase "Consultar Disciplinas Matriculadas" as UC4
+  usecase "Gerar Currículo Semestral" as UC5
+  usecase "Manter Informações de Disciplinas" as UC6
+  usecase "Manter Informações de Professores" as UC7
+  usecase "Manter Informações de Alunos" as UC8
+  usecase "Verificar Status de Disciplinas" as UC9
+  usecase "Consultar Alunos Matriculados" as UC10
+  usecase "Notificar Cobrança" as UC11
+}
+
+Aluno --> UC1
+Aluno --> UC2
+Aluno --> UC3
+Aluno --> UC4
+
+Professor --> UC1
+Professor --> UC10
+
+Secretaria --> UC1
+Secretaria --> UC5
+Secretaria --> UC6
+Secretaria --> UC7
+Secretaria --> UC8
+Secretaria --> UC9
+
+UC2 ..> UC9 : <<include>>
+UC3 ..> UC9 : <<include>>
+UC9 ..> UC11 : <<extend>>
+
+Cobrancas <-- UC11
+@enduml
+```
