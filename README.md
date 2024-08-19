@@ -50,7 +50,6 @@ left to right direction
 actor Aluno
 actor Professor
 actor Secretaria
-actor "Sistema de Cobranças" as Cobrancas
 
 rectangle "Sistema de Matrículas" {
   usecase "Fazer Login" as UC1
@@ -84,7 +83,8 @@ Secretaria --> UC9
 UC2 ..> UC9 : <<include>>
 UC3 ..> UC9 : <<include>>
 UC9 ..> UC11 : <<extend>>
+UC4 ..> UC3 : <<extend>>
 
-Cobrancas <-- UC11
+
 @enduml
 ```
