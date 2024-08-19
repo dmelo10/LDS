@@ -52,7 +52,6 @@ actor Professor
 actor Secretaria
 
 rectangle "Sistema de Matrículas" {
-  usecase "Fazer Login" as UC1
   usecase "Matricular em Disciplinas" as UC2
   usecase "Cancelar Matrícula" as UC3
   usecase "Consultar Disciplinas Matriculadas" as UC4
@@ -65,15 +64,12 @@ rectangle "Sistema de Matrículas" {
   usecase "Notificar Cobrança" as UC11
 }
 
-Aluno --> UC1
 Aluno --> UC2
 Aluno --> UC3
 Aluno --> UC4
 
-Professor --> UC1
 Professor --> UC10
 
-Secretaria --> UC1
 Secretaria --> UC5
 Secretaria --> UC6
 Secretaria --> UC7
