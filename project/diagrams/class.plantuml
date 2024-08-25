@@ -1,0 +1,79 @@
+@startuml
+
+class Universidade {
+  +nome: String
+  +gerarCurriculo()
+}
+
+class Secretaria {
+  +nome: String
+  +id: Int
+  +manterInformacoes()
+  +ativarDisciplina()
+  +cancelarDisciplina()
+}
+
+class Curso {
+  +nome: String
+  +creditos: Int
+  +disciplinas: List<Disciplina>
+}
+
+class Disciplina {
+  +nome: String
+  +creditos: Int
+  +maxAlunos: Int = 60
+  +minAlunos: Int = 3
+  +alunosInscritos: List<Aluno>
+  +ativarDisciplina()
+  +cancelarDisciplina()
+}
+
+class Aluno extends Usuario {
+  +disciplinasObrigatorias: List<Disciplina>
+  +disciplinasOptativas: List<Disciplina>
+  +matricularDisciplina()
+  +cancelarMatricula()
+}
+
+class Professor extends Usuario {
+  +disciplinas: List<Disciplina>
+  +consultarAlunos()
+}
+
+class Usuario {
+  +nome: String
+  +id: Int
+  +email: String
+  +senha: String
+  +login()
+}
+
+class Matricula {
+  +data: Date
+  +status: String
+  +efetuarMatricula()
+  +cancelarMatricula()
+}
+
+class SistemaDeMatriculas {
+  +iniciarPeriodoMatricula()
+  +finalizarPeriodoMatricula()
+  +notificarSistemaDeCobranca()
+}
+
+class SistemaDeCobranca {
+  +gerarCobranca()
+}
+
+Universidade --> Secretaria
+Secretaria --> Curso
+Curso --> Disciplina
+Disciplina --> Professor
+Disciplina --> Aluno : "0..60 inscritos"
+Aluno --> Matricula
+Professor --> Disciplina
+Matricula --> SistemaDeMatriculas
+SistemaDeMatriculas --> SistemaDeCobranca
+
+@enduml

@@ -1,0 +1,38 @@
+@startuml
+left to right direction
+actor Aluno
+actor Professor
+actor Secretaria
+
+rectangle "Sistema de Matrículas" {
+  usecase "Matricular em Disciplinas" as UC2
+  usecase "Cancelar Matrícula" as UC3
+  usecase "Consultar Disciplinas Matriculadas" as UC4
+  usecase "Gerar Currículo Semestral" as UC5
+  usecase "Manter Informações de Disciplinas" as UC6
+  usecase "Manter Informações de Professores" as UC7
+  usecase "Manter Informações de Alunos" as UC8
+  usecase "Verificar Status de Disciplinas" as UC9
+  usecase "Consultar Alunos Matriculados" as UC10
+  usecase "Notificar Cobrança" as UC11
+}
+
+Aluno --> UC2
+Aluno --> UC3
+Aluno --> UC4
+
+Professor --> UC10
+
+Secretaria --> UC5
+Secretaria --> UC6
+Secretaria --> UC7
+Secretaria --> UC8
+Secretaria --> UC9
+
+UC2 ..> UC9 : <<include>>
+UC3 ..> UC9 : <<include>>
+UC9 ..> UC11 : <<extend>>
+UC4 ..> UC3 : <<extend>>
+
+
+@enduml
