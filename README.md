@@ -1,18 +1,17 @@
-# Nome do projeto
-Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
+# Sistema de Matrículas Universitárias
+O Sistema de Matrículas Universitárias é um programa que permite a gestão das matrículas dos alunos em uma universidade. Ele organiza as disciplinas oferecidas em cada semestre e permite que os alunos escolham suas matérias obrigatórias e optativas dentro de um período específico. O sistema garante que uma disciplina só será realizada se tiver pelo menos três alunos matriculados e fecha automaticamente as inscrições quando o limite de 60 alunos é atingido.
+
+Além de facilitar o processo de inscrição para os alunos, o sistema permite que os professores visualizem a lista de alunos matriculados em suas disciplinas. O sistema também notifica o setor de cobranças da universidade, assegurando que os alunos sejam cobrados corretamente pelas disciplinas escolhidas. A segurança é mantida através de um sistema de login com senhas para todos os usuários.
 
 ## Integrantes
 * Alexandre Breedveld Athayde Filho
 * Davi Andrade Rocha Melo de Oliveira
-* Nome completo do aluno 3
-* Nome completo do aluno 4
 
 ## Orientadores
-* Nome completo do professor 1
-* Nome completo do professor 2
+* Cristiano de Macêdo Neto
 
 ## Instruções de utilização
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+Para executar o sistema de matrículas, certifique-se de que o JDK está instalado. Navegue até a pasta onde o arquivo Main.java está localizado, compile-o usando javac Main.java e, em seguida, execute o programa com java Main. O sistema será iniciado no terminal.
 
 # Histórias de Usuário - Sistema de Matrículas Universitário
 
