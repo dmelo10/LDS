@@ -1,0 +1,118 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Aluno {
+  - disciplinas: List<Disciplina>
+  + pagarDisciplinas(Scanner): void
+  - calcularMensalidade(): Double
+  + visualizarDisciplinas(): void
+  + matricularEmDisciplina(Disciplina): Boolean
+  + toString(): String
+  + addToList(Aluno): void
+  + getById(String): Aluno?
+  + cancelarMatriculaDisciplina(Disciplina): Boolean
+   all: List<Aluno>
+   disciplinas: List<Disciplina>
+}
+class Cadastrador {
+  + fazerCadastro(Scanner): void
+  + fazerLoginAluno(Scanner): String
+  + fazerLoginProf(Scanner): void
+  + fazerLoginSecretaria(Scanner): void
+}
+class Curso {
+  - creditos: int
+  - nome: String
+  + addToList(Curso): void
+  + toString(): String
+  + getById(String): Curso?
+   creditos: int
+   all: List<Curso>
+   nome: String
+   disciplinas: String[]
+   id: String
+}
+class Disciplina {
+  - nome: String
+  - isMatriculasAbertas: Boolean
+  - ativa: Boolean
+  + addToList(Disciplina): void
+  + getById(String): Disciplina?
+  + toString(): String
+   ativa: Boolean
+   all: List<Disciplina>
+   nome: String
+   id: String
+   isMatriculasAbertas: Boolean
+}
+class Main {
+  + caseCriarRegistro(Scanner): void
+  - verRegistros(List<T>): void
+  + caseSecretario(Scanner): void
+  - verTodosRegistros(): void
+  - atualizarRegistro(Scanner): void
+  + main(String[]): void
+  - atualizarRegistro(List<T>, Scanner): void
+  - deletarRegistro(Scanner): void
+  + caseAluno(Scanner, String): void
+  - removerRegistro(List<T>, Scanner): void
+  + caseProfessor(Scanner): void
+}
+class Professor {
+  + addToList(Professor): void
+  + getById(String): Professor?
+  + consultarMatriculas(Turma): void
+   all: List<Professor>
+}
+class Secretario {
+  + gerarCurriculo(): void
+  + abrirMatriculas(): Boolean
+  + getById(String): Secretario?
+  + addToList(Secretario): void
+  + encerrarMatriculas(): Boolean
+   all: List<Secretario>
+}
+class Turma {
+  - disciplinaId: String
+  - alunos: List<Aluno>
+  - professorId: String
+  - turmas: List<Turma>
+  + getById(String): Turma?
+  + toString(): String
+  + addToList(Turma): void
+  + isTurmaCheia(): Boolean
+  - generateId(): String
+  + addAluno(Aluno): Boolean
+  + getByDisciplinaId(String): Turma?
+   alunosIds: List<Aluno>
+   alunos: List<Aluno>
+   turmas: List<Turma>
+   all: List<Turma>
+   disciplinaId: String
+   id: String
+   professorId: String
+}
+class Usuario {
+  - login: String
+  - senha: String
+  + toString(): String
+   id: String
+   senha: String
+   login: String
+}
+
+Aluno        -[#595959,dashed]->  Turma       : "«create»"
+Aluno        -[#000082,plain]-^  Usuario     
+Cadastrador  -[#595959,dashed]->  Aluno       : "«create»"
+Cadastrador  -[#595959,dashed]->  Professor   : "«create»"
+Cadastrador  -[#595959,dashed]->  Secretario  : "«create»"
+Main         -[#595959,dashed]->  Aluno       : "«create»"
+Main         -[#595959,dashed]->  Curso       : "«create»"
+Main         -[#595959,dashed]->  Professor   : "«create»"
+Main         -[#595959,dashed]->  Secretario  : "«create»"
+Professor    -[#000082,plain]-^  Usuario     
+Secretario   -[#000082,plain]-^  Usuario     
+@enduml
