@@ -42,22 +42,16 @@ public class Aluno extends Usuario {
 
     public Boolean matricularEmDisciplina(Disciplina disciplina) {
         if (disciplinas.size() >= 6) {
-            System.out.println("\n=======================================\n");
             System.out.println("Matrícula não realizada. Número máximo de disciplinas excedido.");
-            System.out.println("\n=======================================\n");
             return false;
         }
         for (Disciplina d : disciplinas) {
             if (!disciplina.getIsMatriculasAbertas()) {
-                System.out.println("\n=======================================\n");
                 System.out.println("Matrícula não realizada. Disciplina fora do período de matrícula.");
-                System.out.println("\n=======================================\n");
                 return false;
             }
             if (disciplina.getNome().equals(d.getNome())) {
-                System.out.println("\n=======================================\n");
                 System.out.println("Matrícula não realizada. Aluno já matriculado na disciplina.");
-                System.out.println("\n=======================================\n");
                 return false;
             }
         }
@@ -76,9 +70,7 @@ public class Aluno extends Usuario {
     public Boolean cancelarMatriculaDisciplina(Disciplina disciplina) {
         Boolean isMatriculado = false;
         if (disciplinas.size() <= 4) {
-            System.out.println("\n=======================================\n");
             System.out.println("Cancelamento não pode ser realizado. Número mínimo de disciplinas matriculadas é 4.");
-            System.out.println("\n=======================================\n");
             return false;
         }
         for (Disciplina d : disciplinas) {
@@ -91,9 +83,9 @@ public class Aluno extends Usuario {
             disciplinas.remove(disciplina);
             return true;
         }
-        System.out.println("\n=======================================\n");
+        
         System.out.println("Aluno não está matriculado na disciplina.");
-        System.out.println("\n=======================================\n");
+        
         return false;
     }
 
@@ -105,32 +97,26 @@ public class Aluno extends Usuario {
 
     public void pagarDisciplinas(Scanner scan) {
         System.out.println("O valor da sua mensalidade será R$" + calcularMensalidade());
-        System.out.println("Confirmar pagamento? (S/N)");
+        System.out.println("Confirmar pagamento? (y/N)");
 
         String op = scan.nextLine();
-        if(op.equals("S")) {
-            System.out.println("\n=======================================\n");
-            System.out.println("Favor enviar o comprovante de pagamento para o email secretaria@universidade.com");
-            System.out.println("\n=======================================\n");
+        if(op.equals("Y")) {
+            System.out.println("Pagamento realizado");
         } else {
-            System.out.println("\n=======================================\n");
             System.out.println("Procure a secretaria para regularizar sua mensalidade.");
-            System.out.println("\n=======================================\n");
         }
     }
 
     public void visualizarDisciplinas() {
         if(disciplinas.size() == 0) {
-            System.out.println("\n=======================================\n");
             System.out.println("\nAluno não está matriculado em nenhuma disciplina\n");
-            System.out.println("\n=======================================\n");
             return;
         }
-        System.out.println("\n=======DISCIPLINAS MATRICULADAS=======\n");
+        System.out.println("\nDisciplinas Matriculadas\n");
         for (Disciplina disciplina : disciplinas) {
             System.out.println(disciplina.getNome());            
         }
-        System.out.println("\n=======================================\n");
+        
     }
 
     public List<Disciplina> getDisciplinas() {

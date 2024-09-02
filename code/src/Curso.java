@@ -24,7 +24,7 @@ public class Curso implements Serializable{
                 };
             }
         }
-        System.out.println("Componente " + identifier + " nao encontrado");
+        System.out.println(identifier + " inexistente");
         return null;
     }
    

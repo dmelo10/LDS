@@ -72,7 +72,7 @@ public class Cadastrador {
             System.exit(0);
         }
 
-        System.out.println("Bem vindo, " + nome);
+        System.out.println("Logado como: " + nome);
     }
 
     public static void fazerCadastro(Scanner scan) {
@@ -80,13 +80,13 @@ public class Cadastrador {
         try {
             do {
                 System.out
-                        .println("Qual é o tipo de registro?\n1)Aluno\n2)Professor\n3)Secretario\n0)Encerrar programa");
+                        .println("Qual é o tipo de registro?\n1.\tAluno\n2.\tProfessor\n3.\tSecretario\n0.\tEncerrar programa");
                 op = scan.nextLine();
                 switch (op) {
                     case "0":
                         break;
                     case "1":
-                        Usuario u1 = (Usuario) CriadorDeComponentes.createComponentManual(Usuario.class, scan);
+                        Usuario u1 = (Usuario) Element.createComponentManual(Usuario.class, scan);
                         if (Aluno.getById(u1.getLogin()) == null) {
                             Aluno.addToList(new Aluno(u1.getLogin(), u1.getSenha()));
                         } else {
@@ -94,7 +94,7 @@ public class Cadastrador {
                         }
                         break;
                     case "2":
-                        Usuario u2 = (Usuario) CriadorDeComponentes.createComponentManual(Usuario.class, scan);
+                        Usuario u2 = (Usuario) Element.createComponentManual(Usuario.class, scan);
                         if (Professor.getById(u2.getLogin()) == null) {
                             Professor.addToList(new Professor(u2.getLogin(), u2.getSenha()));
                         } else {
@@ -102,7 +102,7 @@ public class Cadastrador {
                         }
                         break;
                     case "3":
-                        Usuario u3 = (Usuario) CriadorDeComponentes.createComponentManual(Usuario.class, scan);
+                        Usuario u3 = (Usuario) Element.createComponentManual(Usuario.class, scan);
                         if (Professor.getById(u3.getLogin()) == null) {
                             Secretario.addToList(new Secretario(u3.getLogin(), u3.getSenha()));
                         } else {
